@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready(function() {
+  $('form[data-remote]').on('ajax:success', function(e, data, status, xhr) {
+    $('body').append('<p>Success!</p>');
+  }).on('ajax:error', function(e, error, status, xhr) {
+    // to reproduce error, inspect and change form action to '/article'
+    $('body').append('<p>Error!</p>');
+  });
+});
