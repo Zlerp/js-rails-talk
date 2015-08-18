@@ -25,6 +25,8 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    # add delay to show disable_with effect
+    sleep 2
 
     respond_to do |format|
       if @article.save
@@ -56,6 +58,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
+      format.js {}
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
